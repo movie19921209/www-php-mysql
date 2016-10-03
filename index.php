@@ -45,8 +45,28 @@ if (mysqli_query($conn, $sql)) {
 } else {
     echo "创建数据表错误: " . mysqli_error($conn);
 }
+echo '<br />';
 
-
+//插入单条数据
+$sql = "INSERT INTO MyGuests (firstname, lastname, email)
+VALUES ('John', 'Doe', 'john@example.com')";
+if (mysqli_query($conn, $sql)) {
+    echo "新记录插入成功";
+} else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+//插入多条数据
+$sql = "INSERT INTO MyGuests (firstname, lastname, email)
+VALUES ('John1', 'Doe', 'john@example.com');";
+$sql .= "INSERT INTO MyGuests (firstname, lastname, email)
+VALUES ('Mary', 'Moe', 'mary@example.com');";
+$sql .= "INSERT INTO MyGuests (firstname, lastname, email)
+VALUES ('Julie', 'Dooley', 'julie@example.com')";
+if (mysqli_multi_query($conn, $sql)) {
+    echo "新记录插入成功";
+} else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
 
 /*
 $sql = 'DROP DATABASE myDB';
