@@ -78,7 +78,7 @@ while($row = mysqli_fetch_array($result))
 	echo "<br>";
 }
 */
-
+/*
 $result = mysqli_query($conn,"SELECT * FROM MyGuests ORDER BY id");
 while($row = mysqli_fetch_array($result))
 {
@@ -87,6 +87,10 @@ while($row = mysqli_fetch_array($result))
 	echo " " . $row['email'];
 	echo "<br>";
 }
+*/
+
+mysqli_query($conn,"UPDATE MyGuests SET email='233nid'
+WHERE firstname='Julie' AND lastname='Dooley'");
 
 /*
 $sql = 'DROP DATABASE myDB';
