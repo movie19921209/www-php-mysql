@@ -16,6 +16,15 @@ if (!$conn) {
     die("连接失败: " . mysqli_connect_error());
 }
 echo "connect successful!";
+echo '连接成功<br />';
+// 创建数据库
+$sql = "CREATE DATABASE IF NOT EXISTS myDB";
+if (mysqli_query($conn, $sql)) {
+    echo "数据库创建成功";
+} else {
+    echo "Error creating database: " . mysqli_error($conn);
+}
+
 
 mysqli_close($conn);
 ?>
