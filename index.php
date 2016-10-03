@@ -21,14 +21,30 @@ echo '连接成功<br />';
 /*选取数据库*/
 mysqli_select_db($conn,'myDB');
 // 创建数据库
-/*
+
 $sql = "CREATE DATABASE IF NOT EXISTS myDB";
 if (mysqli_query($conn, $sql)) {
     echo "数据库创建成功";
 } else {
     echo "Error creating database: " . mysqli_error($conn);
 }
-*/
+echo '<br />';
+
+
+
+//使用 sql 创建数据表
+$sql = "CREATE TABLE IF NOT EXISTS MyGuests (
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+firstname VARCHAR(30) NOT NULL,
+lastname VARCHAR(30) NOT NULL,
+email VARCHAR(50),
+reg_date TIMESTAMP
+)";
+if (mysqli_query($conn, $sql)) {
+    echo "数据表 MyGuests 创建成功";
+} else {
+    echo "创建数据表错误: " . mysqli_error($conn);
+}
 
 
 
