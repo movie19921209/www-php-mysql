@@ -46,7 +46,7 @@ if (mysqli_query($conn, $sql)) {
     echo "创建数据表错误: " . mysqli_error($conn);
 }
 echo '<br />';
-
+/*
 //插入单条数据
 $sql = "INSERT INTO MyGuests (firstname, lastname, email)
 VALUES ('John', 'Doe', 'john@example.com')";
@@ -66,6 +66,14 @@ if (mysqli_multi_query($conn, $sql)) {
     echo "新记录插入成功";
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+*/
+$result = mysqli_query($conn,"SELECT * FROM MyGuests
+WHERE firstname='Mary'");
+while($row = mysqli_fetch_array($result))
+{
+	echo $row['firstname'] . " " . $row['lastname'];
+	echo "<br>";
 }
 
 /*
