@@ -79,6 +79,7 @@ while($row = mysqli_fetch_array($result))
 }
 */
 /*
+//为数据表排序
 $result = mysqli_query($conn,"SELECT * FROM MyGuests ORDER BY id");
 while($row = mysqli_fetch_array($result))
 {
@@ -89,8 +90,14 @@ while($row = mysqli_fetch_array($result))
 }
 */
 
+/*
+//更改数据表
 mysqli_query($conn,"UPDATE MyGuests SET email='233nid'
 WHERE firstname='Julie' AND lastname='Dooley'");
+*/
+
+//删除数据表中的数据
+mysqli_query($conn,"DELETE FROM MyGuests WHERE LastName='Dooley'");
 
 /*
 $sql = 'DROP DATABASE myDB';
