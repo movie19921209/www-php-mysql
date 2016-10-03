@@ -68,7 +68,7 @@ if (mysqli_multi_query($conn, $sql)) {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
 */
-
+/*查询数据库*/
 /*
 $result = mysqli_query($conn,"SELECT * FROM MyGuests
 WHERE firstname='Mary'");
