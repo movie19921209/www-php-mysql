@@ -1,0 +1,74 @@
+1.php中$_REQUEST、$_POST、$_GET的区别和联系小结
+	1. $_REQUEST 
+		php中$_REQUEST可以获取以POST方法和GET方法提交的数据，但是速度比较慢 
+	2. $_GET 
+		用来获取由浏览器通过GET方法提交的数据。GET方法他是通过把参数数据加在提交表单的action属性所指的URL中，值和表单内每个字段一一对应，然后在URL中可以看到，但是有如下缺点： 
+		1. 安全性不好，在URL中可以看得到 
+		2. 传送数据量较小，不能大于2KB。 
+	3. $_POST 
+		用来获取由浏览器通过POST方法提交的数据。POST方法他是通过HTTP POST机制，将表单的各个字段放置在HTTP HEADER内一起传送到action属性所指的URL地址中，用户看不到这个过程。他提交的大小一般来说不受限制，但是具体根据服务器的不同，还是略有不同。相对于_GET方式安全性略高 
+	4. $_REQUEST、$_POST、$_GET 的区别和联系 
+		$_REQUEST["参数"]具用$_POST["参数"] $_GET["参数"]的功能,但是$_REQUEST["参数"]比较慢。通过post和get方法提交的所有数据都可以通过$_REQUEST数组["参数"]获得
+		
+2.$_SERVER
+	$_SERVER 是一个包含了诸如头信息(header)、路径(path)、以及脚本位置(script locations)等等信息的数组。这个数组中的项目由 Web 服务器创建。不能保证每个服务器都提供全部项目；服务器可能会忽略一些，或者提供一些没有在这里列举出来的项目。
+	如：echo $_SERVER['PHP_SELF'];
+	
+	
+3.AJAX （联系代码在同级目录的ajax文件夹里）
+	1.http://www.runoob.com/php/php-ajax-intro.html
+		1.AJAX 是一种在无需重新加载整个网页的情况下，能够更新部分网页的技术。
+			AJAX 是一种用于创建快速动态网页的技术。
+			AJAX 通过在后台与服务器进行少量数据交换，使网页实现异步更新。这意味着可以在不重载整个页面的情况下，对网页的某些部分进行更新。
+		2.AJAX 基于因特网标准，并使用以下技术组合
+			XMLHttpRequest 对象（与服务器异步交互数据）
+			JavaScript/DOM（显示/取回信息）
+			CSS（设置数据的样式）
+			XML（常用作数据传输的格式）
+		
+	2.
+		1.XMLHttpRequest是 AJAX 的基础。
+			所有现代浏览器（IE7+、Firefox、Chrome、Safari 以及 Opera）均内建 XMLHttpRequest 对象。
+				variable=new XMLHttpRequest();
+			老版本的 Internet Explorer （IE5 和 IE6）使用 ActiveX 对象：
+				variable=new ActiveXObject("Microsoft.XMLHTTP");
+		2.XMLHttpRequest 对象用于和服务器交换数据。
+			如需将请求发送到服务器，我们使用 XMLHttpRequest 对象的 open() 和 send() 方法：
+			xmlhttp.open("GET","ajax_info.txt",true);
+			xmlhttp.send();
+			
+			GET 还是 POST？
+			与 POST 相比，GET 更简单也更快，并且在大部分情况下都能用。
+			然而，在以下情况中，请使用 POST 请求：
+			
+			*无法使用缓存文件（更新服务器上的文件或数据库）
+			*向服务器发送大量数据（POST 没有数据量限制）
+			*发送包含未知字符的用户输入时，POST 比 GET 更稳定也更可靠
+		3.如需获得来自服务器的响应，请使用 XMLHttpRequest 对象的 responseText 或 responseXML 属性
+			responseText	获得字符串形式的响应数据。
+			responseXML		获得 XML 形式的响应数据。
+		4.onreadystatechange 事件
+			当请求被发送到服务器时，我们需要执行一些基于响应的任务。
+			每当 readyState 改变时，就会触发 onreadystatechange 事件。
+			readyState 属性存有 XMLHttpRequest 的状态信息。
+			 XMLHttpRequest 对象的三个重要的属性：
+				1.onreadystatechange	存储函数（或函数名），每当 readyState 属性改变时，就会调用该函数。
+				2.readyState		
+											存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。
+											0: 请求未初始化
+											1: 服务器连接已建立
+											2: 请求已接收
+											3: 请求处理中
+											4: 请求已完成，且响应已就绪
+				3.status					200: "OK"
+											404: 未找到页面
+			当 readyState 等于 4 且状态为 200 时，表示响应已就绪：
+			注意： onreadystatechange 事件被触发 5 次（0 - 4），对应着 readyState 的每个变化。
+			  xmlhttp.onreadystatechange=function()
+			  {
+			  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+				{
+				document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+				}
+			  }
+			
