@@ -1,2 +1,2 @@
-»¶Ó­ <?php echo $_POST["fname"]; ?>!<br>
-ÄãµÄÄêÁäÊÇ <?php echo $_POST["age"]; ?>  Ëê¡£
+ï»¿æ¬¢è¿Ž <?php echo $_POST["fname"]; ?>!<br>
+ä½ çš„å¹´é¾„æ˜¯ <?php echo $_POST["age"]; ?>  å²ã€‚
