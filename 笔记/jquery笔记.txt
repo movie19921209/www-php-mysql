@@ -1,0 +1,190 @@
+﻿一：事件
+1.鼠标事件：
+	1.click与dbclick事件
+	2.mousedown与mouseup事件
+	3.mousemove事件：可以监听用户移动的的操作
+	4.mouseover与mouseout事件：监听用户的移入移出操作
+	5.mouseenter与mouseleave事件：
+		和mouseover的主要区别：
+		mouseenter事件只会在绑定它的元素上被调用，而不会在后代节点上被触发
+		mouseover会有冒泡的问题，他会一直往上找父元素上的mouseover事件，如果有全触发了
+	6.hover事件
+		$(selector).hover(handlerIn, handlerOut)
+		handlerIn(eventObject)：当鼠标指针进入元素时触发执行的事件函数
+		handlerOut(eventObject)：当鼠标指针离开元素时触发执行的事件函数
+	7.focusin事件，focusout事件
+		用户在点击聚焦的时候，如果开发者需要捕获这个动作的时候
+		用户在点击失去焦的时候，如果开发者需要捕获这个动作
+2.表单事件：
+	1.blur与foucus事件
+		与focusin事件与focusout事件之间的本质区别:
+		是否支持冒泡处理
+	2.change事件
+		<input>元素，<textarea>和<select>元素都是可以选择值一些改变，开发者可以通过change事件去监听这些改变的动作
+		比如：$(".target2").change(function(e) {$("#result").html(e.target.value)})
+	3.select事件
+		当 textarea 或文本类型的 input 元素中的文本被选择时，会发生 select 事件。
+		select事件只能用于<input>元素与<textarea>元素
+	4.submit事件：
+		有时候开发者需要在表单提交的时候过滤一些的数据，可以通过submit事件，监听下提交表单的这个动作
+3.键盘事件
+	1.keydown()与keyup()事件
+	2.keypress()事件
+4.事件的绑定和解绑
+	1.on()的多事件绑定
+		$("#elem").on('click',function(){}) //on方式
+		$("#elem").on("mouseover mouseout",function(){ });
+	2.on()的高级用法
+		事件机制委托的机制
+		事件绑定在最上层div元素上，当用户触发在a元素上，事件将往上冒泡，一直会冒泡在div元素上。
+		见：http://www.imooc.com/code/10032
+	3.卸载事件off()方法
+		off方法也可以通过相应的传递组合的事件名，名字空间，选择器或处理函数来移除绑定在元素上指定的事件处理函数。
+		当有多个过滤参数时，只有与这些参数完全匹配的事件处理函数才会被移除
+5.事件对象的使用
+	1.事件委托（比较重要）"--->event.target  见：http://www.imooc.com/code/10047
+	2.jQuery事件对象的属性和方法http://www.imooc.com/code/10048
+	
+	
+二：动画
+1.动画基础隐藏和显示
+	1.隐藏元素的hide方法
+		一般可以通过设置css的display为none属性
+		当提供hide方法一个参数时，.hide()成为一个动画方法。.hide()方法将为匹配元素的宽度，高度，以及不透明度，同时进行动画操作
+	2.显示元素的show方法
+		$('elem').hide(3000).show(3000)
+		让元素执行3秒的隐藏动画，然后执行3秒的显示动画
+	3.显示与隐藏切换toggle方法
+		用于切换显示或隐藏匹配元素
+		如果元素是最初显示，它会被隐藏
+		如果隐藏的，它会显示出来
+2.上卷下拉效果 
+	1.下拉动画slideDown
+		slideDown()：用滑动动画显示一个匹配元素
+		.slideDown( [duration ] [, complete ] )
+		第一个参数为持续时间（毫秒为单位），第二个参数为动画执行完后的回调
+	2.上卷动画slideUp
+		$("elem").slideUp();
+	3.上卷下拉切换slideToggle
+		jQuery提供了一个便捷方法slideToggle用滑动动画显示或隐藏一个匹配元素
+		基本的操作：slideToggle();
+3.淡入淡出效果
+	1.淡出动画fadeOut
+		fadeOut()函数用于隐藏所有匹配的元素，并带有淡出的过渡动画效果
+		这里要提一个透明度的方法，设置元素透明度为0，可以让元素不可见，透明度的参数是0~1之间的值，通过改变这个值可以让元素有一个透明度的效果。常见的淡入淡出动画正是这样的原理。
+	2.淡入动画fadeIn
+		淡入的动画原理：操作元素的不透明度从0%逐渐增加到100%
+	3.淡入淡出切换fadeToggle
+		用于切换所有匹配的元素，并带有淡入/淡出的过渡动画效果
+	4.淡入效果fadeTo
+		淡入淡出fadeIn与fadeOut都是修改元素样式的opacity属性，但是他们都有个共同的特点，变化的区间要么是0，要么是1
+		如果要让元素保持动画效果，执行opacity = 0.5的效果时，jQuery提供了fadeTo方法
+
+4.toggle与slideToggle以及fadeToggle的比较
+	1.操作元素的显示和隐藏可以有几种方法
+		*改变样式diplay为none
+		*位置高度为0
+		*透明度为0
+	2.toggle、sildeToggle以及fadeToggle的区别：
+		*toggle：切换显示与隐藏效果
+		*sildeToggle：切换上下拉卷滚效果
+		*fadeToggle：切换淡入淡出效果
+	3.toggle与slideToggle细节区别：
+		*toggle：	  动态效果为从右至左。横向动作，toggle通过display来判断切换所有匹配元素的可见性
+		*slideToggle：动态效果从下至上。竖向动作，slideToggle 通过高度变化来切换所有匹配元素的可见性
+		
+5.自定义动画（动画animate）
+	1.animate( properties, options )
+		1.properties  ：.animate()方法允许我们在任意的数值的CSS属性上创建动画
+		2.options参数 ：
+						*duration - 设置动画执行的时间 
+						*complete：动画完成回调	
+								
+	2.停止动画stop
+		动画在执行过程中是允许被暂停的，当一个元素调用.stop()方法，当前正在运行的动画（如果有的话）立即停止
+		
+		
+
+		
+6.jQuery核心
+	1.each方法的应用
+		用来处理对象和数组的遍历
+		jQuery.each(array, callback )
+		jQuery.each( object, callback )
+		第一个参数传递的就是一个对象或者数组，第二个是回调函数
+	2.查找数组中的索引inArray
+		例如：在数组中查找值是5的索引
+		$.inArray(5,[1,2,3,4,5,6,7]) //返回对应的索引：4
+	3.去空格神器trim方法(一般用于用户的输入，过滤无关字符)
+		jQuery.trim()函数用于去除字符串两端的空白字符
+		需要注意：
+		*移除字符串开始和结尾处的所有换行符，空格(包括连续的空格)和制表符（tab）
+		*如果这些空白字符在字符串中间时，它们将被保留，不会被移除
+	4.DOM元素的获取get方法
+		.get( [index ] )
+		*get方法是获取的dom对象，也就是通过document.getElementById获取的对象
+		*get方法是从0开始索引
+
+三：DOM篇：
+	1.DOM节点的创建
+		$("<div></div>")
+		直接把这个节点的结构给通过HTML标记字符串描述出来，通过$()函数处理
+	2. DOM节点的插入
+		1.内部插入append()与appendTo()----->一般插入在内部的后面
+			$(".content").append('<div class="append">通过append方法添加的元素</div>')
+			$('<div class="appendTo">通过appendTo方法添加的元素</div>').appendTo($(".content"))
+		2.内部插入prepend()与prependTo()----->向匹配元素的内部前置内容
+		3.外部插入after()与before()
+			兄弟之间的关系处理，选中元素外部增加相邻的兄弟节点
+	3.DOM节点的删除
+		1.empty()的基本用法
+			只移除了 指定元素中的所有子节点，只是清空内部的html代码
+		2.remove()
+			remove会将元素自身移除，同时也会移除元素内部的一切，包括绑定的事件及与该元素相关的jQuery数据。
+		3.empty和remove区别
+			empty方法
+				*严格地讲，empty()方法并不是删除节点，而是清空节点，它能清空元素中的所有后代节点
+				*empty不能删除自己本身这个节点
+			remove方法
+				*该节点与该节点所包含的所有后代节点将同时被删除
+				*提供传递一个筛选的表达式，用来指定删除选中合集中的元素
+		4.保留数据的删除操作detach()
+			detach从字面上就很容易理解。让一个web元素托管。即从当前页面中移除该元素，但保留这个元素的内存模型对象
+			当你append之后，又重新回到了文档流中。就又显示出来了
+	4.DOM节点的复制与替换
+		DOM拷贝clone()
+		$("div").clone()   //只克隆了结构，事件丢失
+		$("div").clone(true) //结构、事件与数据都克隆
+	5. jQuery遍历
+		1.children()方法
+			返回匹配元素集合中每个元素的所有子元素（仅儿子辈，这里可以理解为就是父亲-儿子的关系）
+		2.find()方法
+			children是父子关系查找，find是后代关系（包含父子关系）
+		3.parent()方法
+			查找合集里面的每一个元素的父元素（这里可以理解为就是父亲-儿子的关系）
+		4.parents()方法
+			parent只会查找一级，parents则会往上一直查到查找到祖先节点
+		5.closest()方法
+			从元素本身开始，在DOM 树上逐级向上级元素匹配，并返回最先匹配的祖先元素
+		
+		6.next()方法
+			快速查找指定元素集合中每一个元素紧邻的后面同辈元素的元素集合
+		7.prev()方法
+			快速查找指定元素集合中每一个元素紧邻的前面同辈元素的元素集合
+		8.siblings()
+			快速查找指定元集合中每一个元素紧邻的前面后面同辈元素
+
+			
+			
+四：样式篇
+	1.选择器：
+	
+	
+	
+	
+	2.jQuery的属性与样式 
+		
+		
+		
+		
+	
