@@ -34,7 +34,8 @@ echo '<br />';
 
 
 
-$sql="SELECT * FROM MyGuests WHERE id = '".$q."'";
+// $sql="SELECT * FROM MyGuests WHERE id = '".$q."'";
+$sql="SELECT * FROM MyGuests WHERE id = ".$q;
 
 $result = mysqli_query($con,$sql);
 
