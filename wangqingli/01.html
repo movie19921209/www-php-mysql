@@ -5,7 +5,32 @@
 </head>
 <body>
 <script type="text/javascript">
+/*
+split() join()的区别
+	前者是切割成数组的形式，后者是讲数组转换成字符串
+	
+split()	
+		例子二：	
+			
+		<script type="text/javascript">
 
+			var str="How are you doing today?"
+
+			document.write(str.split(" ") + "<br />")
+			document.write(str.split("") + "<br />")
+			document.write(str.split(" ",3))
+
+		</script>
+		输出:
+		How,are,you,doing,today?
+		H,o,w, ,a,r,e, ,y,o,u, ,d,o,i,n,g, ,t,o,d,a,y,?
+		How,are,you
+		例子一：
+		
+		"2:3:4:5".split(":")	//将返回["2", "3", "4", "5"]
+		"|a|b|c".split("|")	//将返回["", "a", "b", "c"]
+		
+	*/	
 var arr = new Array(3)
 arr[0] = "George"
 arr[1] = "John"
