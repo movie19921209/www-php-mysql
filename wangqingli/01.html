@@ -30,15 +30,59 @@ split()
 		"2:3:4:5".split(":")	//将返回["2", "3", "4", "5"]
 		"|a|b|c".split("|")	//将返回["", "a", "b", "c"]
 		
-	*/	
+	*/
+
+/*
+//push()
 var arr = new Array(3)
 arr[0] = "George"
 arr[1] = "John"
 arr[2] = "Thomas"
 
-document.write(arr + "<br />")
+document.write(arr + "<br />")    
 document.write(arr.push("James") + "<br />")
 document.write(arr)
+输出：
+George,John,Thomas
+4
+George,John,Thomas,James
+*/
+/*
+//pop()
+<script type="text/javascript">
+
+var arr = new Array(3)
+arr[0] = "George"
+arr[1] = "John"
+arr[2] = "Thomas"
+
+document.write(arr)    		//George,John,Thomas
+
+document.write("<br />")  
+
+document.write(arr.pop())   //Thomas
+
+document.write("<br />")
+
+document.write(arr)         //George,John
+*/
+
+
+<script type="text/javascript">
+
+var arr = new Array()
+arr[0] = "George"
+arr[1] = "John"
+arr[2] = "Thomas"
+
+document.write(arr + "<br />")                      // George,John,Thomas
+document.write(arr.unshift("William") + "<br />")   //4
+document.write(arr)                                //William,George,John,Thomas
+
+</script>
+
+
+</script>
 
 </script>
 </body>
