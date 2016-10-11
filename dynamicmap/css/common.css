@@ -1,0 +1,23 @@
+
+body{
+	background: transparent;
+	margin: 0px;
+	padding: 0px;
+}
+.zitiyanse{
+    padding: 10px;
+    font-size: 30px;
+    font-family: "黑体";
+    color: #000000;
+    font-weight: bold;
+}
+/*旋转动画*/
+ul li{
+	list-style: none;
+}
+@-webkit-keyframes xz
+{
+	0%{-webkit-transform: rotate(0deg);}
+	100%{-webkit-transform: rotate(360deg);}
+}
+.xuanzhuan{-webkit-animation: xz 1s linear infinite;-webkit-animation-play-state:running;}
