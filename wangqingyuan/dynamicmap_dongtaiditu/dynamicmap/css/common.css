@@ -1,0 +1,17 @@
+body{
+	background: transparent;
+	margin: 0px;
+	padding: 0px;
+	position: relative;
+}
+
+
+.nopass{background: url("../images/station/lineBg_nopass.png") no-repeat bottom;width:48px;}
+.pass{background: url("../images/station/lineBg_pass.png") no-repeat bottom;width:48px;}
+.cur{background: url("../images/station/curBg.png") no-repeat bottom;width:64px; margin-left:3px;margin-right:3px;}
+div{
+	/*outline:1px red solid;*/
+}
+
+
+

@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="Expires" CONTENT="0">
+	<meta http-equiv="Cache-Control" CONTENT="no-cache">
+	<meta http-equiv="Pragma" CONTENT="no-cache">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>厦门动态地铁图</title>
+	<link href="css/common.css" rel="stylesheet" type="text/css">
+	<script src="js/animationManager.js"></script>
+	<script src="js/position.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/math.uuid.js"></script>
+	<script src="js/keyEvent.js"></script>
+	<script src="js/dynamicMap.js?sss"></script>
+	<script src="js/index.js"></script>
+</head>
+<body onload="test()">
+
+	<!-- 全局线路UI -->
+	<div id="lineUI" style="position: absolute;left: 0px;top:0px;overflow: hidden;width:1920px;height: 357px;border: 0px solid red;background: url('./images/nbg.png');">
+	</div>
+
+	<!-- 局部放大线路UI -->
+	<div id="zLineUI" style="position: absolute;left: 0px;top:0px;z-index:0;overflow: hidden;width:1920px;height: 357px;border: 0px solid red;background:url('./images/znbg.png'); display:none;">
+	</div>
+
+
+	
+	<!-- 当前站UI  -->
+	<div id="currentUI" style="position: absolute;left: 0px;top:0px;overflow: hidden;width:1920px;height: 357px;display: none;background: url('./images/znbg.png');">
+	</div>
+	
+	<!-- 列车开往 -->
+	<img id='error' src='./images/none.gif' style='position:absolute;left:0px;top:0px;z-index:100'/>
+	
+	<div style="display:none"></div>
+
+	
+</body>
+</html>
