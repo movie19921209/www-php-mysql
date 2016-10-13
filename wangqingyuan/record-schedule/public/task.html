@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <title>预约录制服务器</title>
+</head>
+<body>
+<div class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <p class="navbar-text" style="font-size:25px;">预约录制服务器</p>
+        </div>
+        <div id="my-collapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a data-toggle="dropdown" href="#" style="margin: 7.5px 0px;">录制信息<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" onclick="hrefRecordlist()" style="display:inline-block;padding: 5px 25px">录制服务器</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <a class="navbar-link navbar-text navbar-right" href="#" style="font-size: 18px;margin: 20px;" onclick="back()">退出登录</a>
+            <a class="navbar-link navbar-text navbar-right" href="#mymodal2" data-toggle="modal" style="font-size: 18px;margin: 20px;">修改口令</a>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row" id="tips" style="display: none;">
+        <div class="col-md-3  col-md-offset-9 text-danger">
+            您的浏览器版本太低，无法播放！
+        </div>
+    </div>
+
+    <table class="table table-hover table-striped">
+        <thead>
+        <tr>
+            <th>名称</th>
+            <th>开始时间</th>
+            <th>结束时间</th>
+            <th>大小</th>
+            <th>直播源</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody id="table-body">
+        </tbody>
+    </table>
+</div>
+<div id="mymodal2" class="modal fade" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" data-dismiss="modal">&times;</span>
+                <h3 class="modal-title">修改口令</h3>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-3  col-md-offset-1">
+                            <label class="control-label" for="oldpwd">原口令：</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input class="form-control" id="oldpwd" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3  col-md-offset-1">
+                            <label class="control-label" for="newpwd">新口令：</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input class="form-control" id="newpwd" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3  col-md-offset-1">
+                            <label class="control-label" for="renewpwd">重复新口令：</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input class="form-control" id="renewpwd" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3  col-md-offset-7">
+                            <input class="btn btn-success" type="button" value="提交" onclick="changePwd()">
+                            <input class="btn btn-danger" type="button" value="关闭" onclick="hidePwdModal()">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/task.js"></script>
+</body>
+</body>
+</html>

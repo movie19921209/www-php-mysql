@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        video{
+            background:black;
+        }
+    </style>
+    <title>预约录制服务器</title>
+</head>
+<body>
+<div class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <p class="navbar-text" style="font-size:25px;">预约录制服务器</p>
+        </div>
+        <a class="navbar-link navbar-text navbar-right" style="font-size: 18px;margin: 20px;" onclick="back()">返回</a>
+    </div>
+</div>
+<div class="container">
+    <video autoplay width="1000" height="500" >
+        <source type="video/mp4">
+    </video>
+</div>
+<script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    var webport=null;
+    $(function () {
+        $.ajax({
+            url:'/admin/video',
+            type:'get',
+            success: function (data) {
+                console.log(data)
+                webport = data.data;
+                $("video").attr("src","http://"+window.location.hostname+":"+webport+"/"+recordName);
+            }
+        })
+    })
+    function back(){
+        window.location.href="/admin/task.html"
+    }
+    var recordName=getQueryStr("recordName");
+    function getQueryStr(str){
+        var LocString=String(window.document.location.href);
+        var rs = new RegExp("(^|)"+str+"=([^\&]*)(\&|$)","gi").exec(LocString), tmp;
+
+        if(tmp=rs){
+            return tmp[2];
+        }
+        return "";
+    }
+</script>
+</body>
+</html>

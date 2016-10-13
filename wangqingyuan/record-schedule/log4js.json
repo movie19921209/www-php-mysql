@@ -1,0 +1,16 @@
+{
+	"appenders": [
+		{
+			"type": "file",
+			"filename": "logs/log.log",
+			"maxLogSize": 2048000,
+			"backups": 5
+		},
+		{
+			"type": "console"
+		}
+	],
+	"levels": {
+		"[all]": "DEBUG"
+	}
+}
